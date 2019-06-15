@@ -1,5 +1,6 @@
 package ru.dmitriyt.streetplay.ui.map
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.arellomobile.mvp.presenter.InjectPresenter
@@ -15,7 +16,7 @@ import com.google.maps.android.clustering.Cluster
 import com.google.maps.android.clustering.ClusterManager
 import com.google.maps.android.clustering.view.DefaultClusterRenderer
 import kotlinx.android.synthetic.main.activity_maps.*
-import kotlinx.android.synthetic.main.bottom_sheet_place.*
+import kotlinx.android.synthetic.main.bottom_sheet_place.view.*
 import ru.dmitriyt.streetplay.App
 import ru.dmitriyt.streetplay.R
 import ru.dmitriyt.streetplay.domain.model.Place
@@ -24,7 +25,7 @@ import ru.dmitriyt.streetplay.presentation.map.MapPresenter
 import ru.dmitriyt.streetplay.ui.global.BaseActivity
 import javax.inject.Inject
 
-class MapsActivity : BaseActivity(), OnMapReadyCallback, IMapView, ClusterManager.OnClusterItemClickListener<Place> {
+class MapsActivity : BaseActivity(), OnMapReadyCallback, IMapView, ClusterManager.OnClusterItemClickListener<Place>, GoogleMap.OnCameraIdleListener {
 
     override val layoutRes: Int = R.layout.activity_maps
 
@@ -48,18 +49,27 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback, IMapView, ClusterManage
         mapFragment.getMapAsync(this)
     }
 
+    @SuppressLint("MissingPermission")
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
         clusterManager = ClusterManager(this, map)
         clusterManager?.setOnClusterItemClickListener(this)
+        clusterManager?.renderer = PlaceRender()
+        map.uiSettings.isMapToolbarEnabled = false
+        map.isMyLocationEnabled = true
         map.setOnMarkerClickListener(clusterManager)
+        map.setOnCameraIdleListener(this)
+    }
+
+    override fun onCameraIdle() {
         presenter.getPlaces()
+        clusterManager?.onCameraIdle()
     }
 
     override fun onClusterItemClick(place: Place): Boolean {
         bottomsheet.showWithSheetView(LayoutInflater.from(this).inflate(R.layout.bottom_sheet_place, bottomsheet, false))
-        place_title.text = place.name
-        place_description.text = place.description
+        bottomsheet.sheetView.place_title.text = place.name
+        bottomsheet.sheetView.place_description.text = place.description
         return true
     }
 
