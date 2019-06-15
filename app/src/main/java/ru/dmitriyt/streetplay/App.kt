@@ -3,6 +3,7 @@ package ru.dmitriyt.streetplay
 import android.app.Application
 import ru.dmitriyt.streetplay.di.AppComponent
 import ru.dmitriyt.streetplay.di.AppModule
+import ru.dmitriyt.streetplay.di.DaggerAppComponent
 
 class App: Application() {
 
@@ -14,7 +15,7 @@ class App: Application() {
     val appComponent: AppComponent by lazy(mode = LazyThreadSafetyMode.NONE) {
         DaggerAppComponent
             .builder()
-            .applicationModule(AppModule(this))
+            .appModule(AppModule(this))
             .build()
     }
 
