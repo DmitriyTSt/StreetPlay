@@ -1,0 +1,24 @@
+<resources>
+    <!--
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=A3:EA:49:A4:8A:6E:65:97:0D:4D:53:F9:AE:7B:09:09:4A:E8:7D:A2%3Bru.dmitriyt.streetplay.ui
+
+    You can also add your credentials to an existing key, using these values:
+
+    Package name:
+    A3:EA:49:A4:8A:6E:65:97:0D:4D:53:F9:AE:7B:09:09:4A:E8:7D:A2
+
+    SHA-1 certificate fingerprint:
+    A3:EA:49:A4:8A:6E:65:97:0D:4D:53:F9:AE:7B:09:09:4A:E8:7D:A2
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <!--<string name="google_maps_key" translatable="false" templateMergeStrategy="preserve">AIzaSyAw-qCBYHVOtOu1pBbyWol4a0Tn0AHYXPc</string>-->
+    <string name="google_maps_key" translatable="false" templateMergeStrategy="preserve">AIzaSyAr3vuT55KjRrspJg3PSIqfCYymBWSJ-dg</string>
+</resources>
