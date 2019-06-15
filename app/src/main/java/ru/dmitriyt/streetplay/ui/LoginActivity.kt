@@ -3,6 +3,7 @@ package ru.dmitriyt.streetplay.ui
 import android.Manifest
 import android.content.Intent
 import android.os.Bundle
+import kotlinx.android.synthetic.main.activity_login.*
 import ru.dmitriyt.streetplay.R
 import ru.dmitriyt.streetplay.data.system.PermissionHelper
 import ru.dmitriyt.streetplay.ui.global.BaseActivity
@@ -37,6 +38,8 @@ class LoginActivity: BaseActivity() {
     }
 
     private fun startApp() {
-        startActivity(Intent(this, MapsActivity::class.java))
+        btn_login.setOnClickListener {
+            startActivity(Intent(this, MapsActivity::class.java))
+        }
     }
 }

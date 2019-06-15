@@ -16,6 +16,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginTop="16dp"
             android:textSize="18sp"
+            android:textColor="@color/colorSecondaryDark"
             android:text="Текст"/>
         <TextView
             android:id="@+id/place_description"
