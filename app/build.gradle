@@ -67,6 +67,10 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:16.1.0'
 
     implementation 'org.slf4j:slf4j-nop:1.7.25'
+
+    // BottomSheet
+    implementation 'com.flipboard:bottomsheet-core:1.5.3'
+    implementation 'com.flipboard:bottomsheet-commons:1.5.3'
 }
 
 apply plugin: 'com.google.gms.google-services'
