@@ -23,6 +23,7 @@ import kotlinx.android.synthetic.main.activity_maps.*
 import kotlinx.android.synthetic.main.bottom_sheet_place.view.*
 import ru.dmitriyt.streetplay.App
 import ru.dmitriyt.streetplay.R
+import ru.dmitriyt.streetplay.data.system.DataUtil
 import ru.dmitriyt.streetplay.domain.model.Place
 import ru.dmitriyt.streetplay.presentation.map.IMapView
 import ru.dmitriyt.streetplay.presentation.map.MapPresenter
@@ -49,7 +50,7 @@ class MapsActivity :
     lateinit var presenter: MapPresenter
 
     @ProvidePresenter
-    fun provideMapPresenter() = MapPresenter()
+    fun providePresenter() = MapPresenter()
 
     private lateinit var map: GoogleMap
     private var clusterManager: ClusterManager<Place>? = null
@@ -85,7 +86,7 @@ class MapsActivity :
         lm.flexWrap = FlexWrap.WRAP
         bottomsheet.sheetView.image_list.layoutManager = lm
         bottomsheet.sheetView.image_list.adapter = PlaceImageAdapter(place.images?:ArrayList())
-        bottomsheet.sheetView.place_last_date.text = "Последняя активность: %s".format(SimpleDateFormat("dd.MM.YYYY HH:mm", Locale.getDefault()).format(place.getLastOnline() * 1000))
+        bottomsheet.sheetView.place_last_date.text = "Последняя активность: %s".format(DataUtil.getFormatTime(place.getLastOnline()))
         return true
     }
 
