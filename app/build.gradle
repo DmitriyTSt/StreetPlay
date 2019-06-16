@@ -12,6 +12,7 @@ android {
         applicationId "ru.dmitriyt.streetplay"
         minSdkVersion 19
         targetSdkVersion 28
+        multiDexEnabled true
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -41,6 +42,11 @@ dependencies {
     implementation "com.android.support:support-vector-drawable:$supportVersion"
     implementation "com.android.support:design:$supportVersion"
     implementation "com.android.support:cardview-v7:$supportVersion"
+
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    kapt 'com.github.bumptech.glide:compiler:4.8.0'
+
+    implementation 'com.google.android:flexbox:1.0.0'
 
     // Moxy
     implementation 'com.arello-mobile:moxy:1.5.5'

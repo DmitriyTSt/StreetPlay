@@ -2,9 +2,13 @@ package ru.dmitriyt.streetplay.ui.map
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
+import com.google.android.flexbox.FlexWrap
+import com.google.android.flexbox.FlexboxLayoutManager
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -23,9 +27,16 @@ import ru.dmitriyt.streetplay.domain.model.Place
 import ru.dmitriyt.streetplay.presentation.map.IMapView
 import ru.dmitriyt.streetplay.presentation.map.MapPresenter
 import ru.dmitriyt.streetplay.ui.global.BaseActivity
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
 
-class MapsActivity : BaseActivity(), OnMapReadyCallback, IMapView, ClusterManager.OnClusterItemClickListener<Place>, GoogleMap.OnCameraIdleListener {
+class MapsActivity :
+    BaseActivity(),
+    OnMapReadyCallback,
+    IMapView,
+    ClusterManager.OnClusterItemClickListener<Place>,
+    GoogleMap.OnCameraIdleListener {
 
     override val layoutRes: Int = R.layout.activity_maps
 
@@ -70,6 +81,11 @@ class MapsActivity : BaseActivity(), OnMapReadyCallback, IMapView, ClusterManage
         bottomsheet.showWithSheetView(LayoutInflater.from(this).inflate(R.layout.bottom_sheet_place, bottomsheet, false))
         bottomsheet.sheetView.place_title.text = place.name
         bottomsheet.sheetView.place_description.text = place.description
+        val lm = FlexboxLayoutManager(this)
+        lm.flexWrap = FlexWrap.WRAP
+        bottomsheet.sheetView.image_list.layoutManager = lm
+        bottomsheet.sheetView.image_list.adapter = PlaceImageAdapter(place.images?:ArrayList())
+        bottomsheet.sheetView.place_last_date.text = "Последняя активность: %s".format(SimpleDateFormat("dd.MM.YYYY HH:mm", Locale.getDefault()).format(place.getLastOnline() * 1000))
         return true
     }
 

@@ -2,6 +2,7 @@ package ru.dmitriyt.streetplay.domain.model
 
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.clustering.ClusterItem
+import java.util.*
 
 class Place (
     val id: Int?,
@@ -21,6 +22,10 @@ class Place (
 
     override fun getPosition(): LatLng {
         return LatLng(coords?.lat?:0.0, coords?.lng?:0.0)
+    }
+
+    fun getLastOnline(): Long {
+        return Calendar.getInstance().timeInMillis / 1000
     }
 
 }
