@@ -8,9 +8,10 @@ class Place (
     val id: Int?,
     val name: String?,
     val description: String?,
-    val images: List<String>?,
+    val images: String?,
     val coords: Coords?,
-    val messages: List<Message>?
+    val messages: List<Message>?,
+    val lastTime: Long? = null
 ) : ClusterItem {
     override fun getSnippet(): String? {
         return null

@@ -50,7 +50,7 @@ class MapsActivity :
     lateinit var presenter: MapPresenter
 
     @ProvidePresenter
-    fun providePresenter() = MapPresenter()
+    fun providePresenter() = presenter
 
     private lateinit var map: GoogleMap
     private var clusterManager: ClusterManager<Place>? = null
@@ -85,8 +85,8 @@ class MapsActivity :
         val lm = FlexboxLayoutManager(this)
         lm.flexWrap = FlexWrap.WRAP
         bottomsheet.sheetView.image_list.layoutManager = lm
-        bottomsheet.sheetView.image_list.adapter = PlaceImageAdapter(place.images?:ArrayList())
-        bottomsheet.sheetView.place_last_date.text = "Последняя активность: %s".format(DataUtil.getFormatTime(place.getLastOnline()))
+        bottomsheet.sheetView.image_list.adapter = PlaceImageAdapter(if (place.images != null) listOf(place.images) else ArrayList())
+        bottomsheet.sheetView.place_last_date.text = "Последняя активность: %s".format(if (place.lastTime != null) DataUtil.getFormatTime(place.lastTime) else "Неизвестно")
         return true
     }
 

@@ -32,7 +32,7 @@ class LoginActivity: BaseActivity(), ILoginView {
     lateinit var presenter: LoginPresenter
 
     @ProvidePresenter
-    fun providePresenter() = LoginPresenter()
+    fun providePresenter() = presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
