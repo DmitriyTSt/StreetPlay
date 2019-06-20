@@ -1,6 +1,7 @@
 package ru.dmitriyt.streetplay.ui.map
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.widget.GridLayoutManager
@@ -28,6 +29,7 @@ import ru.dmitriyt.streetplay.data.system.DataUtil
 import ru.dmitriyt.streetplay.domain.model.Place
 import ru.dmitriyt.streetplay.presentation.map.IMapView
 import ru.dmitriyt.streetplay.presentation.map.MapPresenter
+import ru.dmitriyt.streetplay.ui.chat.ChatActivity
 import ru.dmitriyt.streetplay.ui.global.BaseActivity
 import java.text.SimpleDateFormat
 import java.util.*
@@ -88,6 +90,9 @@ class MapsActivity :
         bottomsheet.sheetView.image_list.layoutManager = lm
         bottomsheet.sheetView.image_list.adapter = PlaceImageAdapter(if (place.images != null) listOf(place.images) else ArrayList())
         bottomsheet.sheetView.place_last_date.text = "Последняя активность: %s".format(if (place.lastTime != null) DataUtil.getFormatTime(place.lastTime) else "Неизвестно")
+        bottomsheet.sheetView.btn_chat.setOnClickListener {
+            startActivity(Intent(this, ChatActivity::class.java).putExtra("placeId", place.id))
+        }
         return true
     }
 

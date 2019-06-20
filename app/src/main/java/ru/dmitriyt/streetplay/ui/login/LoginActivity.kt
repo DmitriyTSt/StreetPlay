@@ -11,6 +11,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.activity_login.*
 import ru.dmitriyt.streetplay.App
 import ru.dmitriyt.streetplay.R
+import ru.dmitriyt.streetplay.data.storage.Pref
 import ru.dmitriyt.streetplay.data.system.PermissionHelper
 import ru.dmitriyt.streetplay.presentation.login.ILoginView
 import ru.dmitriyt.streetplay.presentation.login.LoginPresenter
@@ -34,6 +35,9 @@ class LoginActivity: BaseActivity(), ILoginView {
     @ProvidePresenter
     fun providePresenter() = presenter
 
+    @Inject
+    lateinit var pref: Pref
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestPermission()
@@ -48,6 +52,10 @@ class LoginActivity: BaseActivity(), ILoginView {
                 nickname_layout.error = ""
             }
         })
+        if (pref.userToken != null) {
+            startActivity(Intent(this, MapsActivity::class.java))
+            finish()
+        }
     }
 
     private fun requestPermission() {

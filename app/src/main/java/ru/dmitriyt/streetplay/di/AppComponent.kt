@@ -3,6 +3,7 @@ package ru.dmitriyt.streetplay.di
 import dagger.Component
 import ru.dmitriyt.streetplay.App
 import ru.dmitriyt.streetplay.presentation.login.LoginPresenter
+import ru.dmitriyt.streetplay.ui.chat.ChatActivity
 import ru.dmitriyt.streetplay.ui.login.LoginActivity
 import ru.dmitriyt.streetplay.ui.map.MapsActivity
 import javax.inject.Singleton
@@ -14,4 +15,5 @@ interface AppComponent {
 
     fun inject(activity: MapsActivity)
     fun inject(activity: LoginActivity)
+    fun inject(activity: ChatActivity)
 }

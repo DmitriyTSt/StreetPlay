@@ -7,6 +7,7 @@ import ru.dmitriyt.streetplay.data.repository.PlaceRepository
 import ru.dmitriyt.streetplay.data.storage.Pref
 import ru.dmitriyt.streetplay.domain.repository.IAuthRepository
 import ru.dmitriyt.streetplay.domain.repository.IPlaceRepository
+import ru.dmitriyt.streetplay.presentation.chat.ChatPresenter
 import ru.dmitriyt.streetplay.presentation.login.LoginPresenter
 import ru.dmitriyt.streetplay.presentation.map.MapPresenter
 
@@ -17,4 +18,7 @@ class PresenterModule {
 
     @Provides
     fun provideLoginPresenter(authRepository: IAuthRepository, pref: Pref) = LoginPresenter(authRepository, pref)
+
+    @Provides
+    fun provideChatRepository(placeRepository: IPlaceRepository) = ChatPresenter(placeRepository)
 }

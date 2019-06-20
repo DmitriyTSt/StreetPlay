@@ -15,6 +15,7 @@ class LoginPresenter(private val authRepository: IAuthRepository, private val pr
         }
         authRepository.registration(nickname).subscribe({
             pref.userToken = it.token
+            pref.userUuid = it.uuid
             viewState.goToMap()
         },{
             viewState.showError(it.message)

@@ -1,12 +1,13 @@
 package ru.dmitriyt.streetplay.domain.model
 
 import com.google.android.gms.maps.model.LatLng
+import com.google.gson.annotations.SerializedName
 import com.google.maps.android.clustering.ClusterItem
 import java.util.*
 
 class Place (
     val id: Int?,
-    val name: String?,
+    @SerializedName("type") val name: String?,
     val description: String?,
     val images: String?,
     val coords: Coords?,
