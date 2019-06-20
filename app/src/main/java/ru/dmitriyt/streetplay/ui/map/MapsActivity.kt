@@ -2,6 +2,7 @@ package ru.dmitriyt.streetplay.ui.map
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -94,6 +95,10 @@ class MapsActivity :
         clusterManager?.clearItems()
         clusterManager?.addItems(places)
         clusterManager?.cluster()
+    }
+
+    override fun showError(message: String?) {
+        Snackbar.make(bottomsheet, message?:"Неизвестная ошибка, попробуйте позже", Snackbar.LENGTH_SHORT).show()
     }
 
     private inner class PlaceRender: DefaultClusterRenderer<Place>(this, map, clusterManager) {

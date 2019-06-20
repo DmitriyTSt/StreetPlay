@@ -5,4 +5,5 @@ import ru.dmitriyt.streetplay.domain.model.Place
 
 interface IMapView: MvpView {
     fun showPlaces(places: List<Place>)
+    fun showError(message: String?)
 }

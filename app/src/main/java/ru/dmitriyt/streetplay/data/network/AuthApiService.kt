@@ -7,7 +7,7 @@ import ru.dmitriyt.streetplay.domain.model.TokenResponse
 import ru.dmitriyt.streetplay.domain.model.User
 
 interface AuthApiService {
-    @POST("registration")
+    @POST("registartion")
     fun registration(@Body user: User):Flowable<TokenResponse>
 
 

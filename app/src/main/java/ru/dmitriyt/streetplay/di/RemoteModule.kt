@@ -49,7 +49,7 @@ class RemoteModule {
     @Named("auth")
     fun provideAuthRetrofit(gson: Gson, @Named("auth") okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
-            .baseUrl("http://dmitriyt.profsoft.online/")
+            .baseUrl("http://dmitriyt.profsoft.int:81/index.php/api/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpClient)
@@ -59,7 +59,7 @@ class RemoteModule {
     @Named("main")
     fun provideRetrofit(gson: Gson, @Named("main") okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
-            .baseUrl("http://dmitriyt.profsoft.online/")
+            .baseUrl("http://dmitriyt.profsoft.int:81/index.php/api/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpClient)
