@@ -9,6 +9,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import ru.dmitriyt.streetplay.App
 import ru.dmitriyt.streetplay.data.network.AuthApiService
 import ru.dmitriyt.streetplay.data.network.PlaceApiService
 import ru.dmitriyt.streetplay.data.storage.Pref
@@ -49,7 +50,7 @@ class RemoteModule {
     @Named("auth")
     fun provideAuthRetrofit(gson: Gson, @Named("auth") okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
-            .baseUrl("http://dmitriyt.profsoft.int:81/index.php/api/")
+            .baseUrl(App.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpClient)
@@ -59,7 +60,7 @@ class RemoteModule {
     @Named("main")
     fun provideRetrofit(gson: Gson, @Named("main") okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
-            .baseUrl("http://dmitriyt.profsoft.int:81/index.php/api/")
+            .baseUrl(App.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpClient)

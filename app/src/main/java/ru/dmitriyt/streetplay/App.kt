@@ -10,6 +10,7 @@ class App: Application() {
     companion object {
         lateinit var INSTANCE: App
             private set
+        const val BASE_URL = "http://dmitriyt.profsoft.online/index.php/api/"
     }
 
     val appComponent: AppComponent by lazy(mode = LazyThreadSafetyMode.NONE) {

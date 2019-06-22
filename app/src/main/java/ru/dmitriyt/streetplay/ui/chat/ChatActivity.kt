@@ -48,6 +48,9 @@ class ChatActivity: BaseActivity(), IChatView {
         chat_img.setOnClickListener {
 
         }
+        btn_back.setOnClickListener {
+            finish()
+        }
         btn_send.setOnClickListener {
             if (new_message_text.text.toString().isNotBlank()) {
                 presenter.sendMessage(new_message_text.text.toString())
