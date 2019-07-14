@@ -13,6 +13,7 @@ import ru.dmitriyt.streetplay.App
 import ru.dmitriyt.streetplay.data.network.AuthApiService
 import ru.dmitriyt.streetplay.data.network.PlaceApiService
 import ru.dmitriyt.streetplay.data.storage.Pref
+import java.util.concurrent.TimeUnit
 import javax.inject.Named
 import javax.inject.Singleton
 
@@ -34,6 +35,9 @@ class RemoteModule {
     @Named("main")
     fun provideOkHttpClient(pref: Pref): OkHttpClient =
         OkHttpClient.Builder()
+            .connectTimeout(120, TimeUnit.SECONDS)
+            .readTimeout(120, TimeUnit.SECONDS)
+            .writeTimeout(120, TimeUnit.SECONDS)
             .addInterceptor {
                 val request = it.request()
                 val token = pref.userToken

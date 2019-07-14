@@ -5,9 +5,10 @@ import ru.dmitriyt.streetplay.domain.model.Coords
 import ru.dmitriyt.streetplay.domain.model.Place
 import ru.dmitriyt.streetplay.domain.repository.IPlaceRepository
 import ru.dmitriyt.streetplay.presentation.global.BasePresenter
+import javax.inject.Inject
 
 @InjectViewState
-class MapPresenter(private val placeRepository: IPlaceRepository): BasePresenter<IMapView>() {
+class MapPresenter @Inject constructor(private val placeRepository: IPlaceRepository): BasePresenter<IMapView>() {
 
     fun getPlaces() {
         placeRepository.getPlaces().subscribe({

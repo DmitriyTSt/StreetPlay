@@ -5,11 +5,25 @@
         android:id="@+id/bottomsheet"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <fragment
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <fragment
             xmlns:map="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/map_fragment"
             tools:context=".ui.map.MapsActivity"
             android:name="com.google.android.gms.maps.SupportMapFragment"/>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/btn_create_place"
+            android:src="@drawable/ic_add"
+            android:layout_margin="16dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
 </com.flipboard.bottomsheet.BottomSheetLayout>

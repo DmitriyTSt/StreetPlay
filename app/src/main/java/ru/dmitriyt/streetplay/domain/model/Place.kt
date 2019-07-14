@@ -6,12 +6,12 @@ import com.google.maps.android.clustering.ClusterItem
 import java.util.*
 
 class Place (
-    val id: Int?,
-    @SerializedName("type") val name: String?,
-    val description: String?,
-    val images: String?,
-    val coords: Coords?,
-    val messages: List<Message>?,
+    val id: Int? = null,
+    @SerializedName("type") val name: String? = null,
+    val description: String? = null,
+    val images: String? = null,
+    val coords: Coords? = null,
+    val messages: List<Message>? = null,
     val lastTime: Long? = null
 ) : ClusterItem {
     override fun getSnippet(): String? {

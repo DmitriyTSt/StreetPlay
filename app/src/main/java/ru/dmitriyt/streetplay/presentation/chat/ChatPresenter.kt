@@ -4,9 +4,10 @@ import com.arellomobile.mvp.InjectViewState
 import ru.dmitriyt.streetplay.domain.model.Place
 import ru.dmitriyt.streetplay.domain.repository.IPlaceRepository
 import ru.dmitriyt.streetplay.presentation.global.BasePresenter
+import javax.inject.Inject
 
 @InjectViewState
-class ChatPresenter(private val placeRepository: IPlaceRepository): BasePresenter<IChatView>() {
+class ChatPresenter @Inject constructor(private val placeRepository: IPlaceRepository): BasePresenter<IChatView>() {
 
     private var place: Place? = null
 

@@ -31,6 +31,8 @@ import ru.dmitriyt.streetplay.presentation.map.IMapView
 import ru.dmitriyt.streetplay.presentation.map.MapPresenter
 import ru.dmitriyt.streetplay.ui.chat.ChatActivity
 import ru.dmitriyt.streetplay.ui.global.BaseActivity
+import ru.dmitriyt.streetplay.ui.place.PlaceCreateActivity
+import ru.dmitriyt.streetplay.ui.settings.SettingsActivity
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
@@ -62,6 +64,9 @@ class MapsActivity :
         super.onCreate(savedInstanceState)
         val mapFragment = map_fragment as SupportMapFragment
         mapFragment.getMapAsync(this)
+        btn_create_place.setOnClickListener {
+            startActivity(Intent(this, PlaceCreateActivity::class.java))
+        }
     }
 
     @SuppressLint("MissingPermission")

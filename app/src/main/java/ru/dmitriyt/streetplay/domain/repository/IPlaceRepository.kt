@@ -8,4 +8,6 @@ interface IPlaceRepository {
     fun getPlaces(): Flowable<List<Place>>
     fun getPlace(placeId: Int): Flowable<Place>
     fun sendMessage(placeId: Int, text: String): Flowable<Message>
+    fun addPlace(place: Place): Flowable<Place>
+    fun uploadImage(path: String): Flowable<String>
 }
