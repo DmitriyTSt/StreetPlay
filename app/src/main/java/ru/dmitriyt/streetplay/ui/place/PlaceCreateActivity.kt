@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.activity_create_place.*
 import pl.aprilapps.easyphotopicker.*
 import ru.dmitriyt.streetplay.App
 import ru.dmitriyt.streetplay.R
+import ru.dmitriyt.streetplay.data.system.addHideErrorOnTextChange
 import ru.dmitriyt.streetplay.presentation.place.IPlaceCreateView
 import ru.dmitriyt.streetplay.presentation.place.PlaceCreatePresenter
 import ru.dmitriyt.streetplay.ui.global.BaseActivity
@@ -46,17 +47,7 @@ class PlaceCreateActivity: BaseActivity(), IPlaceCreateView {
         place_image.setOnClickListener {
             EasyImage.openChooserWithGallery(this, "Загрузите фото", 1)
         }
-        title_edit.addTextChangedListener(object: TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
-                title_layout.error = ""
-            }
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-        })
+        title_edit.addHideErrorOnTextChange(title_layout)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

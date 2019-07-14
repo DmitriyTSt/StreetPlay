@@ -7,7 +7,6 @@ import android.view.View
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.activity_chat.*
 import ru.dmitriyt.streetplay.App
 import ru.dmitriyt.streetplay.R
@@ -15,7 +14,6 @@ import ru.dmitriyt.streetplay.data.storage.Pref
 import ru.dmitriyt.streetplay.domain.model.Message
 import ru.dmitriyt.streetplay.presentation.chat.ChatPresenter
 import ru.dmitriyt.streetplay.presentation.chat.IChatView
-import ru.dmitriyt.streetplay.presentation.login.LoginPresenter
 import ru.dmitriyt.streetplay.ui.global.BaseActivity
 import javax.inject.Inject
 

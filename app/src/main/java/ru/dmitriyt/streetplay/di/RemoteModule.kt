@@ -12,6 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import ru.dmitriyt.streetplay.App
 import ru.dmitriyt.streetplay.data.network.AuthApiService
 import ru.dmitriyt.streetplay.data.network.PlaceApiService
+import ru.dmitriyt.streetplay.data.network.UserApiService
 import ru.dmitriyt.streetplay.data.storage.Pref
 import java.util.concurrent.TimeUnit
 import javax.inject.Named
@@ -77,6 +78,10 @@ class RemoteModule {
     @Provides
     @Singleton
     fun providePlaceApiService(@Named("main") retrofit: Retrofit): PlaceApiService = retrofit.create(PlaceApiService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideUserApiService(@Named("main") retrofit: Retrofit): UserApiService = retrofit.create(UserApiService::class.java)
 
 
 }

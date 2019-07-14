@@ -67,6 +67,9 @@ class MapsActivity :
         btn_create_place.setOnClickListener {
             startActivity(Intent(this, PlaceCreateActivity::class.java))
         }
+        btn_settings.setOnClickListener {
+            startActivity(Intent(this, SettingsActivity::class.java))
+        }
     }
 
     @SuppressLint("MissingPermission")

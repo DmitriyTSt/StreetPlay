@@ -7,19 +7,15 @@ import ru.dmitriyt.streetplay.presentation.global.BasePresenter
 import javax.inject.Inject
 
 @InjectViewState
-class LoginPresenter @Inject constructor(private val authRepository: IAuthRepository, private val pref: Pref): BasePresenter<ILoginView>() {
+class RegistrationPresenter @Inject constructor(private val authRepository: IAuthRepository, private val pref: Pref): BasePresenter<IRegistrationView>() {
 
-    fun login(login: String, password: String) {
-        if (login.isBlank()) {
-            viewState.showEmptyLoginError()
-            return
-        }
-        if (password.isBlank()) {
-            viewState.showEmptyPasswordError()
+    fun login(nickname: String) {
+        if (nickname.isBlank()) {
+            viewState.showEmptyNickname()
             return
         }
         viewState.setLoading(true)
-        authRepository.login(login, password).subscribe({
+        authRepository.registration(nickname).subscribe({
             pref.userToken = it.token
             pref.userUuid = it.uuid
             viewState.apply {
